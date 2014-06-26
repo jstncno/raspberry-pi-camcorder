@@ -18,7 +18,7 @@ count = 0
 
 while (1): # run forever
 	count += 1
-	print "recording video", count"
+	print "recording video", count
 	filename = '/media/usbhdd/video_%d.h264' % count
 	camera.start_recording(filename)
 	time.sleep(HOUR) # record for an hour
