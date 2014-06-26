@@ -6,7 +6,7 @@
 # External PiCam resources:
 # http://www.raspberrypi.org/documentation/usage/camera/python/README.md
 # http://www.raspberrypi.org/learning/python-picamera-setup/import time
-
+import time
 import picamera
 import RPi.GPIO as GPIO
 
