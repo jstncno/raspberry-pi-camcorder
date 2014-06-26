@@ -1,0 +1,11 @@
+import time
+import picamera
+import RPi.GPIO as GPIO
+
+with picamera.PiCamera() as camera:
+	camera.start_preview()
+	camera.start_recording('/media/usbhdd/raspberrypi/video.h264')
+	time.sleep(5)
+	camera.stop_recording()
+	camera.stop_preview()
+
