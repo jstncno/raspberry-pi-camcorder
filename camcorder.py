@@ -1,4 +1,8 @@
+# ===================================================================================== 
 # camcorder.py
+# =====================================================================================    
+# Copyright 2014 Justin Cano
+# http://www.justincano.com
 #
 # Python script to record video clips to an external mounted USB NTFS hard drive.
 # Use time.sleep() record for desired amount of time
@@ -8,9 +12,12 @@
 # Format: MM-DD-YY_DayDD_hhmmss
 # Example: 06-27-14_Thurs27_221834 => Thursday, June 27 2014 at 10:18pm
 #
+# License: GPL v3
+#
 # External PiCam resources:
 # http://www.raspberrypi.org/documentation/usage/camera/python/README.md
 # http://www.raspberrypi.org/learning/python-picamera-setup/
+# =====================================================================================
 import time
 import datetime
 import picamera
