@@ -23,12 +23,15 @@ import datetime
 import picamera
 import RPi.GPIO as GPIO
 
+LED = 17 # GPIO pin
+
 DELAY = 10 # time between frame in seconds
 
 MINUTE = 60 # in seconds
 HOUR = 3600 # in seconds
 
 camera = picamera.PiCamera()
+camera.resolution = (1024, 728) # HD resolution
 
 while (1): # run forever
 	date = datetime.datetime.now().strftime('%m-%d-%y_%a%b%d_%H%M%S')
