@@ -36,17 +36,21 @@ RECORDING_LENGTH = HOUR # 3600 seconds
 camera = picamera.PiCamera()
 camera.resolution = (1920, 1080) # HD resolution
 
-LED = 17 # GPIO pin
+def turnOnLED():
+	camera.led = True
 
-GPIO.setmode(GPIO.BCM)
+def turnOffLED():
+	camera.led = False
 
 while (1): # run forever
 	reading = light.getLightReading()
 	if reading < LIGHT_THRESHOLD:
+		turnOnLED()
 		date = datetime.datetime.now().strftime('%m-%d-%y_%a%b%d_%H%M%S')
 		filename = '/media/usbhdd/video_' + date + '.h264'
 		print 'recording video clip', date
 		camera.start_recording(filename)
 		time.sleep(HOUR) # record for an hour
 		camera.stop_recording()
-
+	else:
+		turnOffLED()

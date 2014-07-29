@@ -31,20 +31,25 @@ LIGHT_THRESHOLD = 15000
 MINUTE = 60 # in seconds
 HOUR = 3600 # in seconds
 
-DELAY = 10 # time between frame in seconds
+DELAY = 9 # time between frame in seconds
 
 camera = picamera.PiCamera()
 camera.resolution = (2592, 1944) # HD resolution
 
-LED = 17 # GPIO pin - LED
+def turnOnLED():
+	camera.led = True
 
-GPIO.setmode(GPIO.BCM)
+def turnOffLED():
+	camera.led = False
 
 while (1): # run forever
 	reading = light.getLightReading()
 	if reading < LIGHT_THRESHOLD:
+		turnOnLED()
 		date = datetime.datetime.now().strftime('%m-%d-%y_%a%b%d_%H%M%S')
 		filename = '/media/usbhdd/img_' + date + '.jpg'
 		print 'capturing image', date
 		camera.capture(filename)
 		time.sleep(DELAY) # capture every DELAY seconds
+	else:
+		turnOffLED()
