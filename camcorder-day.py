@@ -18,24 +18,35 @@
 # http://www.raspberrypi.org/documentation/usage/camera/python/README.md
 # http://www.raspberrypi.org/learning/python-picamera-setup/
 # =====================================================================================
+import light
 import time
 import datetime
 import picamera
 import RPi.GPIO as GPIO
 
-LED = 17 # GPIO pin
+# The threshold value to determine when to turn on the camera. Range:
+# 1(light) ~ 50,000(dark)
+LIGHT_THRESHOLD = 15000
 
 MINUTE = 60 # in seconds
 HOUR = 3600 # in seconds
 
+RECORDING_LENGTH = HOUR # 3600 seconds
+
 camera = picamera.PiCamera()
 camera.resolution = (1920, 1080) # HD resolution
 
+LED = 17 # GPIO pin
+
+GPIO.setmode(GPIO.BCM)
+
 while (1): # run forever
-	date = datetime.datetime.now().strftime('%m-%d-%y_%a%b%d_%H%M%S')
-	filename = '/media/usbhdd/video_' + date + '.h264'
-	print 'recording video clip', date
-	camera.start_recording(filename)
-	time.sleep(HOUR) # record for an hour
-	camera.stop_recording()
+	reading = light.getLightReading()
+	if reading < LIGHT_THRESHOLD:
+		date = datetime.datetime.now().strftime('%m-%d-%y_%a%b%d_%H%M%S')
+		filename = '/media/usbhdd/video_' + date + '.h264'
+		print 'recording video clip', date
+		camera.start_recording(filename)
+		time.sleep(HOUR) # record for an hour
+		camera.stop_recording()
 
