@@ -1,0 +1,6 @@
+import serial
+import light
+ser = serial.Serial('/dev/ttyAMA0', 9600)
+
+data = light.getLightReading()
+print data
