@@ -26,7 +26,8 @@ import RPi.GPIO as GPIO
 
 # The threshold value to determine when to turn on the camera. Range:
 # 1(light) ~ 50,000(dark)
-LIGHT_THRESHOLD = 15000
+LIGHT_THRESHOLD = 20000
+OFFSET = 5000
 
 MINUTE = 60 # in seconds
 HOUR = 3600 # in seconds
@@ -44,7 +45,7 @@ def turnOffLED():
 
 while (1): # run forever
 	reading = light.getLightReading()
-	if reading < LIGHT_THRESHOLD:
+	if reading < LIGHT_THRESHOLD+OFFSET:
 		turnOnLED()
 		date = datetime.datetime.now().strftime('%m-%d-%y_%a%b%d_%H%M%S')
 		filename = '/media/usbhdd/video_' + date + '.h264'

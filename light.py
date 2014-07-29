@@ -1,5 +1,6 @@
 #!/usr/bin/python
 import time
+import datetime
 import RPi.GPIO as GPIO
 
 DEBUG = 1
@@ -22,4 +23,6 @@ def getLightReading():
 
 if __name__ == "__main__":
 	while True:
-		print getLightReading()
+		date = datetime.datetime.now().strftime("%X")
+		print "[" + str(date) + "] " + str(getLightReading())
+		time.sleep(1)
