@@ -24,7 +24,7 @@ import time
 import datetime
 import picamera
 import RPi.GPIO as GPIO
-import weather
+import sun
 
 MINUTE = 60 # in seconds
 HOUR = 3600 # in seconds
@@ -34,34 +34,9 @@ RECORDING_LENGTH = HOUR # 3600 seconds
 camera = picamera.PiCamera()
 camera.resolution = (1920, 1080) # HD resolution
 
-SUNRISE = weather.SUNRISE
-SUNSET = weather.SUNSET
-SUNRISE_HOUR, SUNRISE_MINUTE = weather.parseTimestamp(SUNRISE)
-SUNSET_HOUR, SUNSET_MINUTE = weather.parseTimestamp(SUNSET)
-
-# <ON_HOUR:ON_MINUTE> = the time for the camera to turn on
-# Turns on an hour before sunrise
-ON_HOUR = SUNRISE_HOUR - 1
-ON_MINUTE = SUNRISE_MINUTE
-
-# <OFF_HOUR:OFF_MINUTE> = the time for the camera to turn off
-# Turns off an hour after sunset
-OFF_HOUR = SUNSET_HOUR + 1
-OFF_MINUTE = SUNSET_MINUTE
-
-def daytime(current_hour, current_minute):
-	if current_hour == ON_HOUR:
-		return current_minute >= ON_MINUTE
-	if current_hour == OFF_HOUR:
-		return current_minute < OFF_MINUTE
-	
-	return ON_HOUR < current_hour < OFF_HOUR
-
 def main():
 	date = datetime.datetime.now()
-	current_hour = int(date.strftime('%H'))
-	current_minute = int(date.strftime('%M'))
-	if daytime(current_hour, current_minute):
+	if sun.daytime(date):
 		camera.led = True
 		label = date.strftime('%m-%d-%y_%a%b%d_%H%M%S')
 		filename = '/media/usbhdd/video_' + label + '.h264'
