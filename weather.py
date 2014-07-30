@@ -23,7 +23,7 @@ def parseTimestamp(timestamp):
                 hour += 12
         if hour == 24:
                 hour = 0
-        print hour, minute
+        return int(hour), int(minute)
 
 ''' Get weather from different weather stations '''
 yahoo_weather = pywapi.get_weather_from_yahoo(ZIP)

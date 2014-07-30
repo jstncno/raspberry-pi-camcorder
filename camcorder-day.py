@@ -45,7 +45,7 @@ def main():
 	date = datetime.datetime.now()
 	label = date.strftime('%m-%d-%y_%a%b%d_%H%M%S')
 	filename = '/media/usbhdd/video_' + label + '.h264'
-	sunrise_hour, sunrise_min = int(weather.parseTimestamp(SUNRISE))
+	sunrise_hour, sunrise_min = weather.parseTimestamp(SUNRISE)
 	print sunrise_hour, sunrise_min
 	time.sleep(10)
 #	print 'recording video clip', date
