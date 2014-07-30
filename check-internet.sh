@@ -2,7 +2,7 @@
 
 if ! [ "$(ping -c 1 -W 10 google.com)" ]; then
 	# Offline
-	sudo hwclock -s # Load RTC
+	sudo hwclock -s # Load from RTC
 else
 	# Online
 	date
