@@ -34,6 +34,10 @@ RECORDING_LENGTH = HOUR # 3600 seconds
 camera = picamera.PiCamera()
 camera.resolution = (1920, 1080) # HD resolution
 
+LED = 17
+GPIO.setmode(BCM)
+GPIO.setup(LED, GPIO.OUT)
+
 SUNRISE = weather.SUNRISE
 SUNSET = weather.SUNSET
 SUNRISE_HOUR, SUNRISE_MINUTE = weather.parseTimestamp(SUNRISE)
@@ -63,13 +67,15 @@ def main():
 	current_minute = int(date.strftime('%M'))
 	if nighttime(current_hour, current_minute):
 		camera.led = True
+		GPIO.output(LED, GPIO.HIGH)
 		label = date.strftime('%m-%d-%y_%a%b%d_%H%M%S')
 		filename = '/media/usbhdd/video_' + label + '.h264'
-		print 'recording video clip', date
+		print 'recording video clip', label
 		camera.start_recording(filename)
 		time.sleep(HOUR) # record for an hour
 		camera.stop_recording()
 	else:
+		GPIO.outpu(LED, GPIO.LOW)
 		camera.led = False
 		time.sleep(MINUTE)
 

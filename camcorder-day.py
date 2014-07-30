@@ -65,7 +65,7 @@ def main():
 		camera.led = True
 		label = date.strftime('%m-%d-%y_%a%b%d_%H%M%S')
 		filename = '/media/usbhdd/video_' + label + '.h264'
-		print 'recording video clip', date
+		print 'recording video clip', label
 		camera.start_recording(filename)
 		time.sleep(HOUR) # record for an hour
 		camera.stop_recording()
