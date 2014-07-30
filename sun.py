@@ -52,6 +52,7 @@ def getKey(date):
 	current_day = int(date.strftime('%d')) # we need to remove padded 0
 	return str(current_day) + date.strftime('-%b')
 
+# Returns the sunrise and sunset times from the date (key) as time objects
 def getSunData(key):
         today = time_table[key]
         sunrise_hour = today['sunrise'][0:2]
