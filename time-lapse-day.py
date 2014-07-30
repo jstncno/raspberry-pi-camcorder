@@ -36,10 +36,7 @@ camera.resolution = (2592, 1944) # HD resolution
 
 def main():
 	date = datetime.datetime.now()
-	current_day = int(date.strftime('%d'))
-	current_date = str(current_day) + date.strftime('-%b')
-	current_time = int(date.strftime('%H%M'))
-	if sun.daytime(current_date, current_time):
+	if sun.daytime(date):
 		camera.led = True
 		label = date.strftime('%m-%d-%y_%a%b%d_%H%M%S')
 		filename = '/media/usbhdd/img_' + label + '.jpg'
