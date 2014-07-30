@@ -41,13 +41,17 @@ SUNSET = weather.SUNSET
 #def turnOffLED():
 #	camera.led = False
 
-while (1): # run forever
-#	turnOnLED()
-	date = datetime.datetime.now().strftime('%m-%d-%y_%a%b%d_%H%M%S')
-	filename = '/media/usbhdd/video_' + date + '.h264'
-	print SUNRISE, SUNSET
+def main():
+	date = datetime.datetime.now()
+	label = date.strftime('%m-%d-%y_%a%b%d_%H%M%S')
+	filename = '/media/usbhdd/video_' + label + '.h264'
+	print label
+	time.sleep(10)
 #	print 'recording video clip', date
 #	camera.start_recording(filename)
-	time.sleep(HOUR) # record for an hour
+#	time.sleep(HOUR) # record for an hour
 #	camera.stop_recording()
-#	turnOffLED()
+
+if __name__ == "__main__":
+	while True:
+		main()
