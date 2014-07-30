@@ -1,8 +1,7 @@
 # =====================================================================================
 # weather.py
 # =====================================================================================
-# This module fetches sunrise and sunset times from either Yahoo!(primary) or 
-# Weather.com(secondary)
+# This module fetches sunrise and sunset times from YAHOO! weather services
 # This module assumes the following files are in the local director:
 #	SUNRISE.txt
 #	SUNSET.txt
@@ -27,7 +26,6 @@ def parseTimestamp(timestamp):
 
 ''' Get weather from different weather stations '''
 yahoo_weather = pywapi.get_weather_from_yahoo(ZIP)
-weather_com_weather = pywapi.get_weather_from_weather_com(ZIP)
 
 if 'astronomy' in yahoo_weather:
 	print "Connected to YAHOO! weather server!"
@@ -41,15 +39,6 @@ if 'astronomy' in yahoo_weather:
 		SUNSET = str(yahoo_weather['astronomy']['sunset'])
 		sunset.write(SUNSET)
 		sunset.close()
-
-elif 'forecasts' in weather_com_weather:
-	print "Connected to Weather.com weather server!"
-	sunrise = open(SUNRISE_FILE, 'w+')
-        SUNRISE = str(weather_com_weather['forecasts'][0]['sunrise'])
-	sunrise.write(SUNRISE)
-	sunset = open(SUNSET_FILE, 'w+')
-        SUNSET = str(weather_com_weather['forecasts'][0]['sunset'])
-	sunset.write(SUNSET)
 
 else:
 	print "Cannot connect to weather server!"

@@ -65,9 +65,9 @@ def main():
 		camera.led = True
 		label = date.strftime('%m-%d-%y_%a%b%d_%H%M%S')
 		filename = '/media/usbhdd/img_' + label + '.jpg'
-		print 'capturing image', later
+		print 'capturing image', label
 		camera.capture(filename)
-		time.sleep(DELAY) # delay befor next picture
+		time.sleep(DELAY) # delay before next picture
 	else:
 		camera.led = False
 		time.sleep(MINUTE)

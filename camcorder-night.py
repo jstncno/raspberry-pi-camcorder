@@ -35,7 +35,7 @@ camera = picamera.PiCamera()
 camera.resolution = (1920, 1080) # HD resolution
 
 LED = 17
-GPIO.setmode(BCM)
+GPIO.setmode(GPIO.BCM)
 GPIO.setup(LED, GPIO.OUT)
 
 SUNRISE = weather.SUNRISE
