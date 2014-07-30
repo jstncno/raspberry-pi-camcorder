@@ -32,26 +32,8 @@ RECORDING_LENGTH = HOUR # 3600 seconds
 #camera = picamera.PiCamera()
 #camera.resolution = (1920, 1080) # HD resolution
 
-''' Get weather from different weather stations '''
-yahoo_weather = pywapi.get_weather_from_yahoo(ZIP)
-weather_com_weather = pywapi.get_weather_from_weather_com(ZIP)
-
-sunrise = open('SUNRISE.txt', 'w+')
-sunset = open('SUNSET.txt', 'w+')
-if 'astronomy' in yahoo_weather:
-	if 'sunrise' in yahoo_weather['astronomy']:
-		sunrise.write(str(yahoo_weather['astronomy']['sunrise']))
-	if 'sunset' in yahoo_weather['astronomy']:
-		sunset.write(str(yahoo_weather['astronomy']['sunset']))
-
-
-elif 'forecasts' in weather_com_weather:
-	sunrise.write(str(weather_com_weather['forecasts'][0]['sunrise']))
-	sunset.write(str(weather_com_weather['forecasts'][0]['sunset']))
-SUNRISE = sunrise.readline()
-SUNSET = sunset.readline()
-sunrise.close()
-sunset.close()
+SUNRISE = weather.SUNRISE
+SUNSET = weather.SUNSET
 
 #def turnOnLED():
 #	camera.led = True
