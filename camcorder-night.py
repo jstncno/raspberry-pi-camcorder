@@ -24,7 +24,7 @@ import time
 import datetime
 import picamera
 import RPi.GPIO as GPIO
-import weather
+import sun
 
 MINUTE = 60 # in seconds
 HOUR = 3600 # in seconds
@@ -38,34 +38,9 @@ LED = 17
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(LED, GPIO.OUT)
 
-SUNRISE = weather.SUNRISE
-SUNSET = weather.SUNSET
-SUNRISE_HOUR, SUNRISE_MINUTE = weather.parseTimestamp(SUNRISE)
-SUNSET_HOUR, SUNSET_MINUTE = weather.parseTimestamp(SUNSET)
-
-# <ON_HOUR:ON_MINUTE> = the time for the camera to turn on
-# Turns on an hour before sunset
-ON_HOUR = SUNSET_HOUR - 1
-ON_MINUTE = SUNSET_MINUTE
-
-# <OFF_HOUR:OFF_MINUTE> = the time for the camera to turn off
-# Turns off an hour after sunrise
-OFF_HOUR = SUNRISE_HOUR + 1
-OFF_MINUTE = SUNRISE_MINUTE
-
-def nighttime(current_hour, current_minute):
-	if current_hour == ON_HOUR:
-		return current_minute >= ON_MINUTE
-	if current_hour == OFF_HOUR:
-		return current_minute < OFF_MINUTE
-	
-	return current_hour < OFF_HOUR or ON_HOUR < current_hour
-
 def main():
 	date = datetime.datetime.now()
-	current_hour = int(date.strftime('%H'))
-	current_minute = int(date.strftime('%M'))
-	if nighttime(current_hour, current_minute):
+	if sun.nighttime(date):
 		camera.led = True
 		GPIO.output(LED, GPIO.HIGH)
 		label = date.strftime('%m-%d-%y_%a%b%d_%H%M%S')
@@ -75,7 +50,7 @@ def main():
 		time.sleep(HOUR) # record for an hour
 		camera.stop_recording()
 	else:
-		GPIO.outpu(LED, GPIO.LOW)
+		GPIO.output(LED, GPIO.LOW)
 		camera.led = False
 		time.sleep(MINUTE)
 
