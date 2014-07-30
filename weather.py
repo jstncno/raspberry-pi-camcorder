@@ -10,8 +10,8 @@ import pywapi
 
 ZIP = "92507"
 
-SUNRISE_FILE = '/home/pi/scripts/SUNRISE.txt'
-SUNSET_FILE = '/home/pi/scripts/SUNSET.txt'
+SUNRISE_FILE = '/home/pi/SUNRISE.txt'
+SUNSET_FILE = '/home/pi/SUNSET.txt'
 
 def parseTimestamp(timestamp):
         tokens = timestamp.split()
