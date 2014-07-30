@@ -22,9 +22,7 @@ import time
 import datetime
 import picamera
 import RPi.GPIO as GPIO
-import pywapi
-
-ZIP = "92507"
+import weather
 
 MINUTE = 60 # in seconds
 HOUR = 3600 # in seconds
@@ -50,6 +48,8 @@ if 'astronomy' in yahoo_weather:
 elif 'forecasts' in weather_com_weather:
 	sunrise.write(str(weather_com_weather['forecasts'][0]['sunrise']))
 	sunset.write(str(weather_com_weather['forecasts'][0]['sunset']))
+SUNRISE = sunrise.readline()
+SUNSET = sunset.readline()
 sunrise.close()
 sunset.close()
 
@@ -63,7 +63,8 @@ while (1): # run forever
 #	turnOnLED()
 	date = datetime.datetime.now().strftime('%m-%d-%y_%a%b%d_%H%M%S')
 	filename = '/media/usbhdd/video_' + date + '.h264'
-	print 'recording video clip', date
+	print SUNRISE, SUNSET
+#	print 'recording video clip', date
 #	camera.start_recording(filename)
 	time.sleep(HOUR) # record for an hour
 #	camera.stop_recording()
