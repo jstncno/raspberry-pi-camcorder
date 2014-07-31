@@ -1,7 +1,7 @@
 import csv
 import datetime
 
-PATH = '/home/pi/sunrise_sunset_tables.csv'
+PATH = '/home/pi/raspberry-pi-camcorder/sunrise_sunset_tables.csv'
 
 file = open(PATH)
 reader = csv.reader(file)
