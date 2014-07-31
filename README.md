@@ -1,7 +1,12 @@
 # README #
+raspberry-pi-camcorder
+======================
 
-## camcorder.py ##
+Software for day/night camcorder and time-lapse image programs, developed for the UC Riverside Entomology Research Department 
+
+## camcorder.py #
 Python script to record video clips to an external mounted USB NTFS hard drive.
+
 Use time.sleep() record for desired amount of time
 
 ## time-lapse.py ##
@@ -12,7 +17,3 @@ Use time.sleep() for delay between frames
 * http://www.raspberrypi.org/documentation/usage/camera/python/README.md
 * http://www.raspberrypi.org/learning/python-picamera-setup/
 =======
-raspberry-pi-camcorder
-======================
-
-Software for day/night camcorder and time-lapse image programs, developed for the UC Riverside Entomology Research Department 
