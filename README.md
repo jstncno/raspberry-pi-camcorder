@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # README #
 
 ## camcorder.py ##
@@ -11,3 +12,9 @@ Use time.sleep() for delay between frames
 ## External PiCam resources: ##
 * http://www.raspberrypi.org/documentation/usage/camera/python/README.md
 * http://www.raspberrypi.org/learning/python-picamera-setup/
+=======
+raspberry-pi-camcorder
+======================
+
+Software for day/night camcorder and time-lapse image programs, developed for the UC Riverside Entomology Research Department 
+>>>>>>> 5eb9afc26a846454fc94dba2a10c110e44d0bbbe
