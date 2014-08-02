@@ -1,19 +1,7 @@
 # README #
 raspberry-pi-camcorder
 ======================
+This [Raspberry Pi](http://www.raspberrypi.org) dedicated device was developed for the University of California, Riverside Entomology Department in order to successfully capture footage of insect eggs in remote urban and agriculture environments to look for natural predators of the Brown Marmorated Stink Bug. This repository contains four (4) modules intended for use: a camcorder to continuously record hour-long .h264 video clips (day/night) and a time-lapse camera to continuously capture still .jpg images in 10 second-long intervals (day/night).
 
-Software for day/night camcorder and time-lapse image programs, developed for the UC Riverside Entomology Research Department 
-
-## camcorder.py #
-Python script to record video clips to an external mounted USB NTFS hard drive.
-
-Use time.sleep() record for desired amount of time
-
-## time-lapse.py ##
-Python script to capture time-lapse images to an external mounted USB NTFS hard drive.
-Use time.sleep() for delay between frames
-
-## External PiCam resources: ##
-* http://www.raspberrypi.org/documentation/usage/camera/python/README.md
-* http://www.raspberrypi.org/learning/python-picamera-setup/
+Visit the [Wiki](https://github.com/hyperbit/raspberry-pi-camcorder/wiki)
 =======
