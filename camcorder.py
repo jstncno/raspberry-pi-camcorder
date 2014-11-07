@@ -5,9 +5,9 @@
 # http://www.justincano.com
 #
 # Python script to record video clips to an external mounted USB NTFS hard drive.
-# This script is intended to operate the camera at NIGHT TIME hours, before sunrise and
-# after sunset.
-# Use time.sleep() record for desired amount of time
+# This script is intended to operate the camera using a button mechanism that acts as a
+# switch.
+# Click button to begin recording, click again to stop.
 #
 # Video files saved as .h264 named by their timestamp
 # Filename: video_<month>-<day>-<year>_<weekday><day>_<hour><min><sec>.h264
